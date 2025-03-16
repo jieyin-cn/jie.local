@@ -361,3 +361,4 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/jie.local.blazor/jie.local.blazor/Properties/launchSettings.json
