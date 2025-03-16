@@ -1,0 +1,57 @@
+﻿@page "/weather"
+@attribute [StreamRendering]
+
+<PageMainTitle>
+    Weather
+</PageMainTitle>
+
+<PagePretitle>This component demonstrates showing data.</PagePretitle>
+<Dimmer Active="@(forecasts==null)">
+    <Table Item="WeatherForecast" Items="forecasts" PageSize="10" ShowFooter="false"
+           @bind-SelectedItems="selectedForecasts" Hover Responsive>
+        <HeaderTemplate>
+            <strong>Weather</strong>
+        </HeaderTemplate>
+
+        <ChildContent>
+            <Column Item="WeatherForecast" Property="e=>e.Date" Title="Date">
+            </Column>
+            <Column Item="WeatherForecast" Property="e=>e.TemperatureC" Title="Temp. (C)">
+            </Column>
+            <Column Item="WeatherForecast" Property="e=>e.TemperatureF" Title="Temp. (F)">
+            </Column>
+            <Column Item="WeatherForecast" Property="e=>e.Summary" Title="Summary">
+            </Column>
+        </ChildContent>
+    </Table>
+</Dimmer> 
+
+
+
+@code {
+    private WeatherForecast[]? forecasts;
+    List<WeatherForecast> selectedForecasts = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        // Simulate asynchronous loading to demonstrate streaming rendering
+        await Task.Delay(500);
+
+        var startDate = DateOnly.FromDateTime(DateTime.Now);
+        var summaries = new[] { "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching" };
+        forecasts = Enumerable.Range(1, 5).Select(index => new WeatherForecast
+            {
+                Date = startDate.AddDays(index),
+                TemperatureC = Random.Shared.Next(-20, 55),
+                Summary = summaries[Random.Shared.Next(summaries.Length)]
+            }).ToArray();
+    }
+
+    private class WeatherForecast
+    {
+        public DateOnly Date { get; set; }
+        public int TemperatureC { get; set; }
+        public string? Summary { get; set; }
+        public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
+    }
+}

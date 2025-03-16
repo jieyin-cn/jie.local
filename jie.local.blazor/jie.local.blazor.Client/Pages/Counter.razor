@@ -1,0 +1,22 @@
+﻿@page "/counter"
+@rendermode InteractiveWebAssembly
+
+<PageMainTitle>
+    Counter
+</PageMainTitle>
+<Card Size="CardSize.Default">     
+    <CardBody>
+        <p role="status">Current count: @currentCount</p>
+        <Button BackgroundColor="TablerColor.Primary" @onclick="IncrementCount">Click me</Button>
+         
+    </CardBody>
+</Card> 
+
+@code {
+    private int currentCount = 0;
+
+    private void IncrementCount()
+    {
+        currentCount++;
+    }
+}

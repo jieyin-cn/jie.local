@@ -1,0 +1,54 @@
+﻿@* <div class="top-row ps-3 navbar navbar-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="">jie.local.blazor</a>
+    </div>
+</div>
+
+<input type="checkbox" title="Navigation menu" class="navbar-toggler" />
+
+<div class="nav-scrollable" onclick="document.querySelector('.navbar-toggler').click()">
+    <nav class="nav flex-column">
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
+                <span class="bi bi-house-door-fill-nav-menu" aria-hidden="true"></span> Home
+            </NavLink>
+        </div>
+
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="counter">
+                <span class="bi bi-plus-square-fill-nav-menu" aria-hidden="true"></span> Counter
+            </NavLink>
+        </div>
+
+        <div class="nav-item px-3">
+            <NavLink class="nav-link" href="weather">
+                <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> Weather
+            </NavLink>
+        </div>
+    </nav>
+</div> *@
+
+<Navbar Direction=NavbarDirection.Vertical Background=NavbarBackground.Dark>
+
+    <Brand />
+
+    <NavbarMenu>
+        <NavbarMenuItem Href="" Text="Home">
+            <MenuItemIcon>
+                <Icon IconType="@Icons.Home" />
+            </MenuItemIcon>
+        </NavbarMenuItem>
+
+        <NavbarMenuItem Href="counter" Text="Counter">
+            <MenuItemIcon>
+                <Icon IconType="@Icons.Heart" />
+            </MenuItemIcon>
+        </NavbarMenuItem>
+
+        <NavbarMenuItem Href="weather" Text="Weather">
+            <MenuItemIcon>
+                <Icon IconType="@Icons.Bell" />
+            </MenuItemIcon>
+        </NavbarMenuItem>
+    </NavbarMenu>
+</Navbar>

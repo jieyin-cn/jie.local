@@ -1,0 +1,13 @@
+﻿@inject IConfiguration Configuration
+
+<a href="https://tabblazor.com/" target="_blank" class="navbar-brand navbar-brand-autodark" style="justify-content: start; margin-left: 1rem;">
+    <img src="img/TabBlazorLogoWhite.png" alt="Tabler" class="navbar-brand-image me-2">
+    <h2 class="text-secondary m-0">
+        jie.local
+        <span class="d-block fs-6 lh-1">@Version</span>
+    </h2>
+</a>
+
+@code {
+    private string Version => Configuration["Version"] ?? string.Empty;
+}
